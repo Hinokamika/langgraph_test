@@ -17,7 +17,7 @@ llm = init_chat_model(
 class State(TypedDict):
     messages: Annotated[list, add_messages]
 
-graph_builder = StateGraph[State]
+graph_builder = StateGraph(State)
 
 def chatbot(state: State):
     return {"messages" : [llm.invoke(state["messages"])]}
